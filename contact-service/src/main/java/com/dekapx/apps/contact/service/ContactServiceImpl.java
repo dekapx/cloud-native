@@ -2,25 +2,17 @@ package com.dekapx.apps.contact.service;
 
 import com.dekapx.apps.contact.domain.Contact;
 import com.dekapx.apps.contact.repository.ContactRepository;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
 @Slf4j
 @Service
 public class ContactServiceImpl implements ContactService {
-    @Autowired
-    private ExecutorService executorService;
     @Autowired
     private ContactRepository repository;
     @Autowired
