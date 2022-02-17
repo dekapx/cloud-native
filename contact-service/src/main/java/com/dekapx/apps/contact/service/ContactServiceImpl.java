@@ -34,14 +34,13 @@ public class ContactServiceImpl implements ContactService {
     }
 
     private CompletableFuture<Void> buildCompletableFuture() {
-        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+        return CompletableFuture.runAsync(() -> {
             this.syncService.sendEvent("Test Event");
         }).orTimeout(4, TimeUnit.SECONDS).whenComplete((input, exception) -> {
             if (Objects.nonNull(exception)) {
                 log.error("Service not available...");
             }
         });
-        return future;
     }
 
     private void executeCompletableFuture(CompletableFuture<Void> future) {
